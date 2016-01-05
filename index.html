@@ -20,7 +20,7 @@
     <div class="row center-xs">
 
         <div class="col-xs-12">
-            <input type="file" value="Upload" accept="image/*;capture=camera" id="img_capture" class="upload-btn">
+            <input type="file" value="Upload" accept="image/*;capture=camera" id="img_capture" class="upload-btn reset">
 <!--             <button>Camera</button>
  -->        </div>
 
@@ -42,7 +42,7 @@
                 <li id="list5"><p>Invert</p><input id="slider5" type="range" value="0" min="0" max="100"></li>
             </ul>
             <button ><a id="download" download="CanvasDemo.png">Save</a></button>
-            <button><a id="reset">Reset</a></button>
+            <button><a class="reset">Reset</a></button>
         </div>
     </div>
 
@@ -58,7 +58,7 @@
     var slider3 = document.getElementById("slider3");
     var slider4 = document.getElementById("slider4");
     var slider5 = document.getElementById("slider5");
-    var reset = document.getElementById("reset");
+    var newPic = document.getElementById("img_capture");
 
     var sepia = slider1.value;
     var blur = slider2.value;
@@ -88,7 +88,7 @@
         img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" + this.value + "%)" ;
     });
 
-    reset.addEventListener("click", function(){
+$('.reset').click(function() {
         img_canvas.style["-webkit-filter"] = "blur("+0+"px) sepia("+0+"%) grayscale(" +0+ "%) hue-rotate(" +0+ "deg) invert(" +0+ "%)" ;
         slider1.value = 0;
         slider2.value = 0;
