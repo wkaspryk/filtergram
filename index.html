@@ -40,7 +40,7 @@
                 <li id="list3"><p>Black and White</p><input id="slider3" type="range" value="0" min="0" max="100"></li>
                 <li id="list4"><p>Hue</p><input id="slider4" type="range" value="0" min="0" max="100"></li>
                 <li id="list5"><p>Invert</p><input id="slider5" type="range" value="0" min="0" max="100"></li>
-                <li id="list6"><p>1977</p><input id="slider6" type="range" value="0.5" min="0" max="1" step="0.01"></li>
+                <li id="list6"><p>1977</p><input id="slider6" type="range" value="1" min="0" max="1" step="0.1"></li>
             </ul>
             <button ><a id="download" download="CanvasDemo.png">Save</a></button>
             <button><a class="reset">Reset</a></button>
@@ -89,8 +89,8 @@
         img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" + this.value + "%)" ;
     });
 
-    var opacity = slider6.value;
-    $("._1977").css("opacity", opacity);
+    var opacity = slider6.value; 
+    $("canvas").css("opacity", opacity);
 
 $('.reset').click(function() {
         img_canvas.style["-webkit-filter"] = "blur("+0+"px) sepia("+0+"%) grayscale(" +0+ "%) hue-rotate(" +0+ "deg) invert(" +0+ "%)" ;
@@ -124,20 +124,6 @@ if ($(window).width() < 1200) {
 
 }
    
-// if (img.width() < img.height()) {
-//     $(img).addClass('portrait');
-// }
-
-// $( img ).change(function() {
-//   alert( "excuse me?" );
-// }); 
-
-// $("#img_canvas").attrchange(img, function(e) {
-//     if (img.width() < img.height()) {
-//         $(img).addClass('portrait');
-//     }
-// });
-
 var lastHeight = $("#img_canvas").height;
 function checkForChanges()
 {
