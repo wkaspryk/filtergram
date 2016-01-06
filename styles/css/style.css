@@ -24,10 +24,6 @@ header {
   background-color: #fff;
   padding: 1em; }
 
-canvas {
-  max-height: 300px;
-  width: auto; }
-
 .upload-btn {
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
@@ -113,11 +109,10 @@ ul {
   transition: color,0.15s,ease-in; }
 
 .portrait {
-  max-height: 300px;
-  width: auto; }
+  max-height: 300px; }
 
-._1977:after, ._1977:before, .aden:after, .aden:before, .brooklyn:after, .brooklyn:before, .clarendon:after, .clarendon:before, .earlybird:after, .earlybird:before, .gingham:after, .gingham:before, .hudson:after, .hudson:before, .inkwell:after, .inkwell:before, .lark:after, .lark:before, .lofi:after, .lofi:before, .mayfair:after, .mayfair:before, .moon:after, .moon:before, .nashville:after, .nashville:before, .perpetua:after, .perpetua:before, .reyes:after, .reyes:before, .toaster:after, .toaster:before, .walden:after, .walden:before, .willow:after, .willow:before, .xpro2:after, .xpro2:before {
-  opacity: 0; }
+.landscape {
+  width: 100%; }
 
 @media (max-width: 1200px) {
   header h1 {

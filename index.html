@@ -29,7 +29,7 @@
     <div class="content row center-xs">
 
         <div class="canvas-wrap col-lg-4 col-md-6 col-xs-10">
-            <canvas id="img_canvas" class="_1977">
+            <canvas id="img_canvas">
             </canvas>
         </div>
 
@@ -67,30 +67,72 @@
     var huerotate = slider4.value;
     var invert = slider5.value;
 
-    slider1.addEventListener("input", function(){
-        sepia = this.value;
-        img.style["-webkit-" + "filter"] = "blur("+blur+"px) sepia(" + this.value + "%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" +invert+ "%)";
+    function applyFilterAttr(css_atr,attr_value){
+
+        switch(css_atr){
+
+            case 'blur':
+                blur = attr_value;
+                break;
+            case 'sepia':
+                sepia = attr_value;
+                break;
+            case 'grayscale':
+                grayscale = attr_value;
+                break;
+            case 'hue-rotate':
+                huerotate = attr_value;
+                break;
+            case 'invert':
+                invert = attr_value;
+                break;
+            default:
+                break;
+        }
+
+        img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" + grayscale + "%) hue-rotate(" +huerotate+ "deg) invert(" +invert+ "%)" ;
         img.style["-moz-" + "filter"] = "blur("+blur+"px) sepia(" + this.value + "%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" +invert+ "%)";
-    });
-    slider2.addEventListener("input", function(){
-        blur = this.value;
-        img.style["-webkit-filter"] = "blur(" + this.value + "px) sepia("+sepia+"%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" +invert+ "%)" ;
-    });
-    slider3.addEventListener("input", function(){
-        grayscale = this.value;
-        img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" + this.value + "%) hue-rotate(" +huerotate+ "deg) invert(" +invert+ "%)" ;
-    });
-    slider4.addEventListener("input", function(){
-        huerotate = this.value;
-        img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" +grayscale+ "%) hue-rotate(" + this.value + "deg) invert(" +invert+ "%)" ;
-    });
-    slider5.addEventListener("input", function(){
-        invert = this.value;
-        img.style["-webkit-filter"] = "blur("+blur+"px) sepia("+sepia+"%) grayscale(" +grayscale+ "%) hue-rotate(" +huerotate+ "deg) invert(" + this.value + "%)" ;
+
+    }
+
+    slider1.addEventListener("input", function(){
+
+        applyFilterAttr('sepia',this.value);
+
     });
 
-    var opacity = slider6.value; 
-    $("canvas").css("opacity", opacity);
+
+    slider2.addEventListener("input", function(){
+
+        applyFilterAttr('blur',this.value);
+
+    });
+
+    slider3.addEventListener("input", function(){
+
+        applyFilterAttr('grayscale',this.value);
+
+    });
+
+    slider4.addEventListener("input", function(){
+
+        applyFilterAttr('hue-rotate',this.value);
+
+    });
+
+    slider5.addEventListener("input", function(){
+
+        applyFilterAttr('invert',this.value);
+
+    });
+
+
+    slider6.addEventListener("input", function(){
+        opacity = this.value;
+        $(".canvas-wrap").css("opacity", opacity);
+        console.log("test");
+    });
+
 
 $('.reset').click(function() {
         img_canvas.style["-webkit-filter"] = "blur("+0+"px) sepia("+0+"%) grayscale(" +0+ "%) hue-rotate(" +0+ "deg) invert(" +0+ "%)" ;
@@ -123,20 +165,7 @@ if ($(window).width() < 1200) {
     });
 
 }
-   
-var lastHeight = $("#img_canvas").height;
-function checkForChanges()
-{
-    if ($("#img_canvas").height != lastHeight)
-    {
-        if (("#img_canvas").width() < ("#img_canvas").height()) {
-            $("#img_canvas").addClass('portrait');
-        }
-        lastHeight = $("#img_canvas").css('height'); 
-    }
 
-    setTimeout(checkForChanges, 5000);
-}
 
 </script>
 
